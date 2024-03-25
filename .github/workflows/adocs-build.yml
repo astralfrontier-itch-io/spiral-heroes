@@ -1,0 +1,23 @@
+name: Build Game
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  adoc_build:
+    runs-on: ubuntu-latest
+    name: Build HTML and PDF
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build HTML
+        id: adochtml
+        uses: tonynv/asciidoctor-action@master
+        with:
+          program: "asciidoctor -D dist --backend=html5 -o spiral-heroes.html spiral-heroes.ad"
+      - name: Build PDF
+        id: adocpdf
+        uses: tonynv/asciidoctor-action@master
+        with:
+          program: "asciidoctor-pdf -D dist -o spiral-heroes.pdf spiral-heroes.ad"
