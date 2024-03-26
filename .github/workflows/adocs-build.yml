@@ -24,4 +24,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: game
-          path: dist/
+          path: |
+            dist/spiral-heroes.html
+            dist/spiral-heroes.pdf
